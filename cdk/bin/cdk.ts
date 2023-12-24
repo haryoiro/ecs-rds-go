@@ -13,7 +13,7 @@ const env: cdk.Environment = getEnv(app);
 
 const config: Config = {
   env: getEnvName(app) as Environment,
-  appName: "ecs-rds-go",
+  appName: "cdk_ecspresso",
 }
 
 const vpcStack = new VpcStack(app, `${config.appName}-${config.env}-vpc`, config, { env });

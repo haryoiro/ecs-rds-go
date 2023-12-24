@@ -78,7 +78,7 @@ export class EcspressoStack extends cdk.Stack {
         });
 
         const repository = new ecr.Repository(this, 'repository', {
-            repositoryName: `${config.appName}-${config.env}-repository`,
+            repositoryName: `${config.appName}-repository`,
         });
 
         repository.grantPull(taskExecutionRole);

@@ -100,7 +100,7 @@ export class RdsStack extends cdk.Stack {
                 parameterGroup
             }),
 
-            deletionProtection: true,
+            deletionProtection: false,
             iamAuthentication: true,
             preferredMaintenanceWindow: 'mon:04:00-mon:05:00',
             removalPolicy: cdk.RemovalPolicy.DESTROY,

@@ -1,0 +1,37 @@
+{
+    "deploymentConfiguration": {
+      "deploymentCircuitBreaker": {
+        "enable": false,
+        "rollback": false
+      },
+      "maximumPercent": 200,
+      "minimumHealthyPercent": 100
+    },
+    "desiredCount": 1,
+    "enableECSManagedTags": false,
+    "healthCheckGracePeriodSeconds": 0,
+    "launchType": "FARGATE",
+    "loadBalancers": [
+      {
+        "containerName": "nginx",
+        "containerPort": 80,
+        "targetGroupArn": "{{ ssm `/ecs/dev/ecs-rds-go/container-tg` }}"
+      }
+    ],
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "securityGroups": [
+          "{{ ssm `/ecs/dev/ecs-rds-go/container-sg` }}"
+        ],
+        "subnets": [
+          "{{ ssm `/ecs/dev/ecs-rds-go/container-subnet-a` }}",
+          "{{ ssm `/ecs/dev/ecs-rds-go/container-subnet-c` }}"
+        ]
+      }
+    },
+    "placementConstraints": [],
+    "placementStrategy": [],
+    "platformVersion": "LATEST",
+    "schedulingStrategy": "REPLICA",
+    "serviceRegistries": []
+  }
